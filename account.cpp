@@ -1,5 +1,6 @@
 #include "account.h"
 using namespace std;
+// ghi log vào trong history khi thực hiện đăng kí tài khoản
 void writeAccountCreate(const string &time, const string &id,
                         const string &pass, const vector<string> &history)
 {
@@ -15,6 +16,7 @@ void writeAccountCreate(const string &time, const string &id,
     file << "ID : " << id << endl;
     file << "Password : " << pass << endl;
 }
+// lấy lịch sử vào vector history
 void getListHistory(vector<string> &history)
 {
     fstream file;
@@ -27,6 +29,7 @@ void getListHistory(vector<string> &history)
         history.push_back(s);
     }
 }
+// ghi log vào trong history khi thực hiện nộp tiền hoặc rút tiền
 void updateListHistoryWithdrawalAndDeposit(const string &time, const string &id,
                                            const int &option, const long long &balance,
                                            const vector<string> &history)
@@ -52,6 +55,7 @@ void updateListHistoryWithdrawalAndDeposit(const string &time, const string &id,
         file << "Da rut : " << balance << endl;
     }
 }
+// lấy thời gian khi giao dịch
 string getTime()
 {
     time_t now = time(0);
@@ -165,6 +169,7 @@ bool checkIDAppear(const string &ID, vector<string> &listData)
     return false;
 }
 
+// lấy vị trí của id trong listData
 long long getAddressCustomer(const string &ID, vector<string> &listData)
 {
     int n = listData.size();
